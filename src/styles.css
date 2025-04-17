@@ -1,0 +1,385 @@
+/* Import Gothic-style font from Google Fonts */
+@import "bootstrap/dist/css/bootstrap.min.css";
+@import "@fortawesome/fontawesome-free/css/all.min.css";
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap');
+
+:root {
+  --bg-color: #f8f9fa;
+  --text-color: #212529;
+  --section-bg: #ffffff;
+  --card-bg: #ffffff;
+  --navbar-bg: #343a40;
+  --hero-bg: linear-gradient(135deg, #6c757d, #343a40);
+  --footer-bg: rgba(52, 58, 64, 0.5);
+  --footer-text: #ffffff;
+  --about-bg: #f0f4f8;
+  --skills-bg: #f8f0f5;
+  --projects-bg: #e6f0fa;
+  --contact-bg: #f5f5f5;
+  --separator-color: #d3d3d3;
+  --highlight-color: #ff6f61; /* Coral for light mode */
+}
+
+[data-theme="dark"] {
+  --bg-color: transparent;
+  --text-color: #e0e0e0;
+  --section-bg: rgba(42, 46, 52, 0.85);
+  --card-bg: rgba(58, 62, 68, 0.85);
+  --navbar-bg: #1a1e22;
+  --hero-bg: linear-gradient(135deg, rgba(58, 62, 68, 0.85), rgba(26, 30, 34, 0.85));
+  --footer-bg: #1a1e22;
+  --footer-text: #e0e0e0;
+  --about-bg: rgba(42, 46, 52, 0.6);
+  --skills-bg: rgba(48, 44, 50, 0.95);
+  --projects-bg: rgba(38, 42, 48, 0.95);
+  --contact-bg: rgba(44, 48, 54, 0.95);
+  --separator-color: #4a4e54;
+  --highlight-color: #ff8779; /* Lighter coral for dark mode */
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  overflow-y: scroll;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: color 0.3s ease;
+}
+
+body[data-theme="dark"] {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('./assets/dark-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-color: transparent;
+}
+
+.navbar {
+  background-color: var(--navbar-bg);
+  width: 100vw;
+  left: 0;
+  right: 0;
+}
+
+/* Increase font size of navbar elements */
+.navbar-nav .nav-link {
+  font-size: 1.25rem;
+  padding: 0.5rem 1rem;
+  color: #ffffff;
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.theme-toggle {
+  cursor: pointer;
+  color: #ffffff;
+  font-size: 1.25rem;
+}
+
+.theme-toggle:hover {
+  color: #adb5bd;
+}
+
+.hero-section {
+  position: relative;
+  background: var(--hero-bg);
+  color: white;
+  padding: 100px 0;
+  text-align: center;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('./assets/hero-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 50vh;
+  min-height: 350px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Dark mode hero section background */
+[data-theme="dark"] .hero-section {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('./assets/hero-bg.jpg');
+}
+
+/* Hero section heading with Gothic calligraphy style */
+.hero-section h1 {
+  font-family: 'Cinzel', serif;
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  animation: fadeIn 1s ease-in;
+  letter-spacing: 1px;
+}
+
+/* Hero section paragraph */
+.hero-section p {
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  line-height: 1.6;
+  animation: fadeIn 1s ease-in 0.3s;
+  animation-fill-mode: both;
+}
+
+/* Hero section button */
+.hero-section .btn {
+  font-size: 1.1rem;
+  padding: 0.75rem 2rem;
+  border-radius: 25px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  animation: fadeIn 1s ease-in 0.6s;
+  animation-fill-mode: both;
+}
+
+.hero-section .btn-light {
+  background-color: #ffffff;
+  color: #343a40;
+  border: none;
+}
+
+.hero-section .btn-light:hover {
+  background-color: #e0e0e0;
+  transform: scale(1.05);
+}
+
+[data-theme="dark"] .hero-section .btn-light {
+  background-color: #ff6f61;
+  color: #ffffff;
+}
+
+[data-theme="dark"] .hero-section .btn-light:hover {
+  background-color: #ff8779;
+  transform: scale(1.05);
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive adjustments for hero section */
+@media (max-width: 768px) {
+  .hero-section {
+    padding: 60px 0;
+    min-height: 300px;
+  }
+
+  .hero-section h1 {
+    font-size: 2.5rem;
+  }
+
+  .hero-section p {
+    font-size: 1rem;
+  }
+
+  .hero-section .btn {
+    font-size: 1rem;
+    padding: 0.5rem 1.5rem;
+  }
+
+  .navbar-nav .nav-link {
+    font-size: 1.1rem;
+  }
+
+  .navbar-brand {
+    font-size: 1.3rem;
+  }
+
+  .theme-toggle {
+    font-size: 1.1rem;
+  }
+}
+
+/* General section styles */
+.section {
+  padding: 80px 0;
+  position: relative;
+  transition: background-color 0.3s ease;
+}
+
+/* Section separator */
+.section:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50%;
+  height: 3px;
+  background: linear-gradient(to right, transparent, var(--separator-color), transparent);
+}
+
+/* About Me section specific styles */
+#about {
+  background: var(--about-bg);
+  border-radius: 10px;
+  margin: 0 auto;
+  max-width: 1200px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Dark mode About Me background */
+[data-theme="dark"] #about {
+  background: var(--about-bg);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* About Me heading */
+#about h2 {
+  font-family: 'Cinzel', serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  animation: fadeIn 1s ease-in;
+}
+
+/* About Me icon */
+#about h2 i {
+  font-size: 1.5rem;
+  margin-right: 0.5rem;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+#about h2 i:hover {
+  transform: rotate(360deg);
+  color: #ff6f61;
+}
+
+/* About Me paragraph */
+#about p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  animation: fadeIn 1s ease-in 0.3s;
+  animation-fill-mode: both;
+}
+
+/* Highlighted skills in About Me paragraph */
+.highlight-skill {
+  font-weight: 700;
+  color: var(--highlight-color);
+  transition: color 0.3s ease;
+}
+
+/* Responsive adjustments for About Me section */
+@media (max-width: 768px) {
+  #about {
+    padding: 20px;
+    max-width: 90%;
+  }
+
+  #about h2 {
+    font-size: 2rem;
+  }
+
+  #about p {
+    font-size: 1rem;
+  }
+}
+
+/* Skills section specific styles */
+#skills {
+  background: var(--skills-bg);
+}
+
+/* Dark mode Skills background */
+[data-theme="dark"] #skills {
+  background: var(--skills-bg);
+}
+
+/* Projects section specific styles */
+#projects {
+  background: var(--projects-bg);
+}
+
+/* Dark mode Projects background */
+[data-theme="dark"] #projects {
+  background: var(--projects-bg);
+}
+
+/* Contact section specific styles */
+#contact {
+  background: var(--contact-bg);
+}
+
+/* Dark mode Contact background */
+[data-theme="dark"] #contact {
+  background: var(--contact-bg);
+}
+
+.card {
+  background-color: var(--card-bg);
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+}
+
+.footer {
+  background-color: var(--footer-bg);
+  color: var(--footer-text);
+  padding: 20px 0;
+  text-align: center;
+}
+
+.section p, .section h2 {
+  color: var(--text-color);
+}
+
+.offcanvas {
+  background-color: var(--navbar-bg);
+}
+
+.offcanvas .nav-link {
+  color: #ffffff;
+}
+
+.offcanvas .nav-link:hover {
+  color: #adb5bd;
+}
+
+.navbar-toggler {
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+.navbar-toggler:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.navbar-toggler:active, .navbar-toggler:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.offcanvas {
+  transition: transform 0.3s ease-in-out;
+}
+
+body.offcanvas-active {
+  overflow: hidden;
+}
+
+body.offcanvas-active .navbar.fixed-top {
+  padding-right: 0 !important;
+}
+
+/* Ensure social icons in Contact Me section are visible in dark mode */
+[data-theme="dark"] .text-dark {
+  color: #e0e0e0 !important;
+}
