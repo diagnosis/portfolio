@@ -1,4 +1,4 @@
-class ProjectDetails {
+export class ProjectDetails {
     constructor(id, title, client, description, responsibilities, technologies, outcomes, links) {
         this.id = id; // Unique identifier for modal (e.g., "project1")
         this.title = title;
@@ -62,5 +62,3 @@ class ProjectDetails {
     `;
     }
 }
-
-export default ProjectDetails;

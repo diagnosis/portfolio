@@ -1,17 +1,31 @@
 import './styles.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
-import projectsList from "./components/Projects";
-import ToggleTheme from './components/ToggleTheme'
+import projectsList from './components/Projects';
+import ToggleTheme from './components/ToggleTheme';
+import { fetchProjects } from './cms/sanityClient.js';
+import {ProjectDetails}  from './components/ProjectDetails';
 
-class App{
-    constructor(){
-        this.toogleTheme = new ToggleTheme()
+class App {
+    constructor() {
+        this.toggleTheme = new ToggleTheme();
+        this.renderProjects();
+    }
+
+    async renderProjects() {
+        const projectsData = await fetchProjects();
+        projectsList.projects = projectsData.map((item, index) => new ProjectDetails(
+            `project${index + 1}`,
+            item.title,
+            item.client,
+            item.description,
+            item.responsibilities,
+            item.technologies,
+            item.outcomes,
+            item.links || []
+        ));
         projectsList.render();
     }
 }
-
-new App()
-
 // Remove focus from toggler and manage body overflow
 document.addEventListener('DOMContentLoaded', function () {
     const offcanvasElement = document.getElementById('navbarOffcanvas');
@@ -29,3 +43,5 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 });
+
+new App();

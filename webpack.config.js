@@ -3,6 +3,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
+const webpack = require('webpack');
+require('dotenv').config();
 
 module.exports = (env, argv) => ({
   entry: './src/script.js',
@@ -51,6 +53,12 @@ module.exports = (env, argv) => ({
     new MiniCssExtractPlugin({
       filename: 'styles.[contenthash].css',
     }),
+    new webpack.DefinePlugin({
+      'process.env': {
+        SANITY_PROJECT_ID: JSON.stringify(process.env.SANITY_PROJECT_ID),
+        SANITY_TOKEN: JSON.stringify(process.env.SANITY_TOKEN)
+      }
+    })
   ],
   optimization: {
     minimize: argv.mode === 'production',
