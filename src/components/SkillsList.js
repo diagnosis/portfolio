@@ -1,0 +1,7 @@
+
+
+class SkillsList{
+
+    constructor() {}
+
+}

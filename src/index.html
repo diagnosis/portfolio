@@ -4,12 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Safa Demirkan - Portfolio</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body data-theme="dark">
 <!-- Navigation -->
-<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
-  <div class="container">
-    <a class="navbar-brand" href="#">Safa Demirkan</a>
+<nav class="navbar navbar-expand-lg navbar-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">S.D</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarOffcanvas" aria-controls="navbarOffcanvas" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -48,7 +49,7 @@
 
 <!-- Hero Section -->
 <section id="home" class="hero-section">
-  <div class="container">
+  <div class="container-fluid">
     <h1>Safa Demirkan - Software Development Engineer in Test</h1>
     <h4>As a creator of automation robots, I empower apps with tireless heroes that test relentlessly, free from the burdens of bills and hunger, ensuring flawless performance.</h4>
     <a href="#contact" class="btn btn-light mt-3">Get in Touch</a>
@@ -57,7 +58,7 @@
 
 <!-- About Section -->
 <section id="about" class="section">
-  <div class="container">
+  <div class="container-fluid">
     <div class="text-center mb-4">
       <!-- <img src="./assets/profile.jpg" alt="Safa Demirkan" class="rounded-circle" style="width: 150px; height: 150px; object-fit: cover;"> -->
     </div>
@@ -72,34 +73,43 @@
 
 <!-- Skills Section -->
 <section id="skills" class="section">
-  <div class="container">
+  <div class="container-fluid">
     <h2 class="text-center mb-5"><i class="fas fa-code me-2"></i>Skills</h2>
     <div class="row">
       <div class="col-md-4 mb-4">
-        <div class="card text-center">
-          <div class="card-body">
-            <i class="fas fa-vial fa-2x mb-3"></i>
-            <h5 class="card-title">Test Automation</h5>
-            <p class="card-text">[Placeholder: Description of test automation skills.]</p>
-          </div>
+        <div class="skill-category">
+          <h4>Technologies</h4>
+          <p><span class="highlight-skill">Java</span>, <span class="highlight-skill">Kotlin</span>, <span class="highlight-skill">JavaScript</span>, <span class="highlight-skill">Swift</span>, REST, SOAP, GraphQL</p>
         </div>
       </div>
       <div class="col-md-4 mb-4">
-        <div class="card text-center">
-          <div class="card-body">
-            <i class="fas fa-bug fa-2x mb-3"></i>
-            <h5 class="card-title">Debugging</h5>
-            <p class="card-text">[Placeholder: Description of debugging skills.]</p>
-          </div>
+        <div class="skill-category">
+          <h4>Frameworks</h4>
+          <p>BDD, TDD, <span class="highlight-skill">JUnit</span>, <span class="highlight-skill">TestNG</span>, <span class="highlight-skill">Selenium</span>, <span class="highlight-skill">Cucumber</span>, <span class="highlight-skill">Espresso</span>, <span class="highlight-skill">XCUITest</span>, <span class="highlight-skill">Appium</span></p>
         </div>
       </div>
       <div class="col-md-4 mb-4">
-        <div class="card text-center">
-          <div class="card-body">
-            <i class="fas fa-laptop-code fa-2x mb-3"></i>
-            <h5 class="card-title">Programming</h5>
-            <p class="card-text">[Placeholder: Description of programming skills.]</p>
-          </div>
+        <div class="skill-category">
+          <h4>Tools</h4>
+          <p><span class="highlight-skill">Git</span>, <span class="highlight-skill">Jenkins</span>, <span class="highlight-skill">Bitrise</span>, <span class="highlight-skill">Docker</span>, <span class="highlight-skill">IntelliJ IDEA</span>, <span class="highlight-skill">Xcode</span>, <span class="highlight-skill">Android Studio</span></p>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="skill-category">
+          <h4>Databases</h4>
+          <p><span class="highlight-skill">Oracle</span>, <span class="highlight-skill">SQL Server</span>, <span class="highlight-skill">DB2</span>, <span class="highlight-skill">MongoDB</span></p>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="skill-category">
+          <h4>Cloud</h4>
+          <p><span class="highlight-skill">AWS</span>, <span class="highlight-skill">Google Cloud Platform</span>, Mac Stadium</p>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="skill-category">
+          <h4>Other</h4>
+          <p><span class="highlight-skill">Sauce Labs</span>, Office, Rall, Jira, Falsh</p>
         </div>
       </div>
     </div>
@@ -108,40 +118,15 @@
 
 <!-- Projects Section -->
 <section id="projects" class="section">
-  <div class="container">
+  <div class="container-fluid">
     <h2 class="text-center mb-5"><i class="fas fa-project-diagram me-2"></i>Projects</h2>
-    <div class="row">
-      <div class="col-md-4 mb-4">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">Project 1</h5>
-            <p class="card-text">[Placeholder: Description of project 1.]</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4 mb-4">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">Project 2</h5>
-            <p class="card-text">[Placeholder: Description of project 2.]</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4 mb-4">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">Project 3</h5>
-            <p class="card-text">[Placeholder: Description of project 3.]</p>
-          </div>
-        </div>
-      </div>
-    </div>
+    <div class="row" id="project-list"></div>
   </div>
 </section>
 
 <!-- Contact Section -->
 <section id="contact" class="section">
-  <div class="container">
+  <div class="container-fluid">
     <h2 class="text-center mb-5"><i class="fas fa-envelope me-2"></i>Contact Me</h2>
     <div class="row">
       <div class="col-md-6 offset-md-3">
@@ -158,9 +143,10 @@
 
 <!-- Footer -->
 <footer class="footer">
-  <div class="container">
+  <div class="container-fluid">
     <p>© 2025 Safa Demirkan. All Rights Reserved.</p>
   </div>
 </footer>
+
 </body>
 </html>

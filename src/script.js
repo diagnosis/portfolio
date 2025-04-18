@@ -1,10 +1,12 @@
 import './styles.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+import projectsList from "./components/Projects";
 import ToggleTheme from './components/ToggleTheme'
 
 class App{
     constructor(){
         this.toogleTheme = new ToggleTheme()
+        projectsList.render();
     }
 }
 
