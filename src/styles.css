@@ -267,7 +267,7 @@ body[data-theme="dark"] {
 
 /* Modal styles */
 .modal-content {
-  background-color: var(--card-bg);
+  background-color: rgba(58, 62, 68, 0.95);
   color: var(--text-color);
   border-radius: 10px;
   border: none;
@@ -596,5 +596,79 @@ body.offcanvas-active .navbar.fixed-top {
   .project-link {
     font-size: 0.9rem;
     margin-right: 0.5rem;
+  }
+}
+
+
+/* Contact form styles */
+#contact .btn-light {
+  padding: 0.75rem 2rem;
+  border-radius: 25px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#contact .btn-light:hover {
+  background-color: #e0e0e0;
+  transform: scale(1.05);
+}
+
+[data-theme="dark"] #contact .btn-light {
+  background-color: var(--highlight-color);
+  color: #ffffff;
+}
+
+[data-theme="dark"] #contact .btn-light:hover {
+  background-color: var(--highlight-color, #ff8779);
+  transform: scale(1.05);
+}
+
+.social-links a {
+  transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+  color: var(--highlight-color);
+}
+
+/* Contact modal form */
+#contactModal .form-label {
+  color: var(--text-color);
+  font-weight: 500;
+}
+
+#contactModal .form-control {
+  background-color: rgba(255, 255, 255, 0.5);
+  border: 1px solid var(--separator-color);
+  color: var(--text-color);
+}
+
+#contactModal .form-control:focus {
+  border-color: var(--highlight-color);
+  box-shadow: 0 0 5px rgba(255, 111, 97, 0.5);
+}
+
+#contactModal .btn-primary {
+  background-color: var(--highlight-color);
+  border: none;
+  border-radius: 25px;
+  padding: 0.5rem 1.5rem;
+}
+
+#contactModal .btn-primary:hover {
+  background-color: var(--highlight-color, #ff8779);
+  transform: scale(1.05);
+}
+
+.hidden {
+  display: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  #contactModal .modal-title {
+    font-size: 1.5rem;
+  }
+  #contactModal .modal-body {
+    font-size: 1rem;
   }
 }

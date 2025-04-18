@@ -51,7 +51,7 @@
 <section id="home" class="hero-section">
   <div class="container-fluid">
     <h1>Safa Demirkan - Software Development Engineer in Test</h1>
-    <h4>As a creator of automation robots, I empower apps with tireless heroes that test relentlessly, free from the burdens of bills and hunger, ensuring flawless performance.</h4>
+    <h4>As an automation engineer, I empower apps with tireless heroes that test relentlessly, free from the burdens of bills and hunger, ensuring flawless performance.</h4>
     <a href="#contact" class="btn btn-light mt-3">Get in Touch</a>
   </div>
 </section>
@@ -129,12 +129,12 @@
   <div class="container-fluid">
     <h2 class="text-center mb-5"><i class="fas fa-envelope me-2"></i>Contact Me</h2>
     <div class="row">
-      <div class="col-md-6 offset-md-3">
-        <p class="text-center">[Placeholder: Contact information or form.]</p>
-        <div class="text-center">
-          <a href="#" class="text-dark mx-2"><i class="fab fa-linkedin fa-2x"></i></a>
-          <a href="#" class="text-dark mx-2"><i class="fab fa-github fa-2x"></i></a>
-          <a href="#" class="text-dark mx-2"><i class="fas fa-envelope fa-2x"></i></a>
+      <div class="col-md-6 offset-md-3 text-center">
+        <button type="button" class="btn btn-light mb-3" data-bs-toggle="modal" data-bs-target="#contactModal">Send a Message</button>
+        <div class="social-links">
+          <a href="https://www.linkedin.com/in/safa-demirkan-94663b280/" class="text-dark mx-2"><i class="fab fa-linkedin fa-2x"></i></a>
+          <a href="https://github.com/diagnosis" class="text-dark mx-2"><i class="fab fa-github fa-2x"></i></a>
+          <a href="https://www.instagram.com/serik_lee/" class="text-dark mx-2"><i class="fa-brands fa-instagram fa-2x"></i></a>
         </div>
       </div>
     </div>
@@ -147,6 +147,40 @@
     <p>© 2025 Safa Demirkan. All Rights Reserved.</p>
   </div>
 </footer>
-
+<!-- Contact Modal -->
+<div class="modal fade" id="contactModal" tabindex="-1" aria-labelledby="contactModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="contactModalLabel">Contact Me</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+          <input type="hidden" name="form-name" value="contact">
+          <p class="hidden">
+            <label>Don’t fill this out: <input name="bot-field"></label>
+          </p>
+          <div class="mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" class="form-control" id="name" name="name" required>
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" name="email" required>
+          </div>
+          <div class="mb-3">
+            <label for="message" class="form-label">Message</label>
+            <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Send Message</button>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
 </body>
 </html>
