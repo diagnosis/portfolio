@@ -4,13 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Safa Demirkan - Portfolio</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="shortcut icon" href="./assets/logo.jpg" type="image/x-icon">
 </head>
 <body data-theme="dark">
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">S.D</a>
+    <a class="navbar-brand" href="#" aria-label="Safa Demirkan Logo"></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarOffcanvas" aria-controls="navbarOffcanvas" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -22,19 +22,19 @@
       <div class="offcanvas-body">
         <ul class="navbar-nav ms-auto align-items-lg-center">
           <li class="nav-item">
-            <a class="nav-link" href="#home">Home</a>
+            <a class="nav-link section-link" href="#home"><i class="fas fa-home me-2"></i>Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#about">About</a>
+            <a class="nav-link section-link" href="#about"><i class="fas fa-user me-2"></i>About</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#skills">Skills</a>
+            <a class="nav-link section-link" href="#skills"><i class="fas fa-tools me-2"></i>Skills</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#projects">Projects</a>
+            <a class="nav-link section-link" href="#projects"><i class="fas fa-project-diagram me-2"></i>Projects</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#contact">Contact</a>
+            <a class="nav-link section-link" href="#contact"><i class="fas fa-envelope me-2"></i>Contact</a>
           </li>
           <li class="nav-item">
             <span class="nav-link theme-toggle">
@@ -52,7 +52,7 @@
   <div class="container-fluid">
     <h1>Safa Demirkan - Software Development Engineer in Test</h1>
     <h4>As an automation engineer, I empower apps with tireless heroes that test relentlessly, free from the burdens of bills and hunger, ensuring flawless performance.</h4>
-    <a href="#contact" class="btn btn-light mt-3">Get in Touch</a>
+    <button type="button" class="btn btn-light mt-3" data-bs-toggle="modal" data-bs-target="#contactModal">Get in Touch</button>
   </div>
 </section>
 
@@ -60,7 +60,7 @@
 <section id="about" class="section">
   <div class="container-fluid">
     <div class="text-center mb-4">
-      <!-- <img src="./assets/profile.jpg" alt="Safa Demirkan" class="rounded-circle" style="width: 150px; height: 150px; object-fit: cover;"> -->
+      <!-- Removed profile image -->
     </div>
     <h2 class="text-center mb-5"><i class="fas fa-user me-2"></i>About Me</h2>
     <div class="row">
@@ -74,45 +74,9 @@
 <!-- Skills Section -->
 <section id="skills" class="section">
   <div class="container-fluid">
-    <h2 class="text-center mb-5"><i class="fas fa-code me-2"></i>Skills</h2>
-    <div class="row">
-      <div class="col-md-4 mb-4">
-        <div class="skill-category">
-          <h4>Technologies</h4>
-          <p><span class="highlight-skill">Java</span>, <span class="highlight-skill">Kotlin</span>, <span class="highlight-skill">JavaScript</span>, <span class="highlight-skill">Swift</span>, REST, SOAP, GraphQL</p>
-        </div>
-      </div>
-      <div class="col-md-4 mb-4">
-        <div class="skill-category">
-          <h4>Frameworks</h4>
-          <p>BDD, TDD, <span class="highlight-skill">JUnit</span>, <span class="highlight-skill">TestNG</span>, <span class="highlight-skill">Selenium</span>, <span class="highlight-skill">Cucumber</span>, <span class="highlight-skill">Espresso</span>, <span class="highlight-skill">XCUITest</span>, <span class="highlight-skill">Appium</span></p>
-        </div>
-      </div>
-      <div class="col-md-4 mb-4">
-        <div class="skill-category">
-          <h4>Tools</h4>
-          <p><span class="highlight-skill">Git</span>, <span class="highlight-skill">Jenkins</span>, <span class="highlight-skill">Bitrise</span>, <span class="highlight-skill">Docker</span>, <span class="highlight-skill">IntelliJ IDEA</span>, <span class="highlight-skill">Xcode</span>, <span class="highlight-skill">Android Studio</span></p>
-        </div>
-      </div>
-      <div class="col-md-4 mb-4">
-        <div class="skill-category">
-          <h4>Databases</h4>
-          <p><span class="highlight-skill">Oracle</span>, <span class="highlight-skill">SQL Server</span>, <span class="highlight-skill">DB2</span>, <span class="highlight-skill">MongoDB</span></p>
-        </div>
-      </div>
-      <div class="col-md-4 mb-4">
-        <div class="skill-category">
-          <h4>Cloud</h4>
-          <p><span class="highlight-skill">AWS</span>, <span class="highlight-skill">Google Cloud Platform</span>, Mac Stadium</p>
-        </div>
-      </div>
-      <div class="col-md-4 mb-4">
-        <div class="skill-category">
-          <h4>Other</h4>
-          <p><span class="highlight-skill">Sauce Labs</span>, Office, Rall, Jira, Falsh</p>
-        </div>
-      </div>
-    </div>
+    <h2 class="text-center mb-5"><i class="fas fa-tools me-2"></i>Skills</h2>
+    <div class="row" id="skills-list"></div>
+    <!-- Removed test image -->
   </div>
 </section>
 
@@ -134,7 +98,7 @@
         <div class="social-links">
           <a href="https://www.linkedin.com/in/safa-demirkan-94663b280/" class="text-dark mx-2"><i class="fab fa-linkedin fa-2x"></i></a>
           <a href="https://github.com/diagnosis" class="text-dark mx-2"><i class="fab fa-github fa-2x"></i></a>
-          <a href="https://www.instagram.com/serik_lee/" class="text-dark mx-2"><i class="fa-brands fa-instagram fa-2x"></i></a>
+          <a href="https://www.instagram.com/serik_lee/" class="text-dark mx-2"><i class="fab fa-instagram fa-2x"></i></a>
         </div>
       </div>
     </div>
@@ -147,6 +111,7 @@
     <p>© 2025 Safa Demirkan. All Rights Reserved.</p>
   </div>
 </footer>
+
 <!-- Contact Modal -->
 <div class="modal fade" id="contactModal" tabindex="-1" aria-labelledby="contactModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg modal-dialog-centered">

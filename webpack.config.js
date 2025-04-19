@@ -21,29 +21,30 @@ module.exports = (env, argv) => ({
     hot: true,
   },
   module: {
-    rules: [
-      {
-        test: /\.css$/i,
-        use: [
-          argv.mode === 'production' ? MiniCssExtractPlugin.loader : 'style-loader',
-          'css-loader',
-        ],
-      },
-      {
-        test: /\.(woff|woff2|eot|ttf|otf)$/i,
-        type: 'asset/resource',
-        generator: {
-          filename: 'fonts/[name][ext][query]',
-        },
-      },
-      {
-        test: /\.(png|jpg|jpeg|gif|svg)$/i,
-        type: 'asset/resource',
-        generator: {
-          filename: 'assets/[name][ext][query]',
-        },
-      },
+    rules:  [
+  // Remove the .js rule
+  {
+    test: /\.css$/i,
+    use: [
+      argv.mode === 'production' ? MiniCssExtractPlugin.loader : 'style-loader',
+    'css-loader',
     ],
+  },
+  {
+    test: /\.(woff|woff2|eot|ttf|otf)$/i,
+    type: 'asset/resource',
+    generator: {
+      filename: 'fonts/[name][ext][query]',
+    },
+  },
+  {
+    test: /\.(png|jpg|jpeg|gif|svg|ico)$/i,
+    type: 'asset/resource',
+    generator: {
+      filename: 'assets/[name][ext][query]',
+    },
+  },
+],
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -53,12 +54,15 @@ module.exports = (env, argv) => ({
     new MiniCssExtractPlugin({
       filename: 'styles.[contenthash].css',
     }),
+    new webpack.ProvidePlugin({
+      bootstrap: 'bootstrap',
+    }),
     new webpack.DefinePlugin({
       'process.env': {
         SANITY_PROJECT_ID: JSON.stringify(process.env.SANITY_PROJECT_ID),
-        SANITY_TOKEN: JSON.stringify(process.env.SANITY_TOKEN)
-      }
-    })
+        SANITY_TOKEN: JSON.stringify(process.env.SANITY_TOKEN),
+      },
+    }),
   ],
   optimization: {
     minimize: argv.mode === 'production',

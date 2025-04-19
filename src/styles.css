@@ -36,6 +36,7 @@
   --separator-color: #4a4e54;
   --highlight-color: #ff8779;
 }
+/* Favicon via CSS */
 
 html, body {
   height: 100%;
@@ -65,15 +66,24 @@ body[data-theme="dark"] {
   max-width: 1400px;
   margin: 0 auto;
   width: 100%;
-  padding: 0.5rem 0;
+  padding: 10px 0;
   z-index: 1000;
 }
 
-/* Navbar brand */
+/* Navbar brand with logo as background image */
 .navbar-brand {
-  font-size: 1.5rem;
-  font-weight: 700;
-  margin-left: 1rem;
+  background-image: url('./assets/logo.jpg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 48px;
+  width: 100px;
+  display: block;
+  transition: transform 0.2s ease;
+}
+
+.navbar-brand:hover {
+  transform: scale(1.05);
 }
 
 /* Navbar links */
@@ -465,6 +475,81 @@ body[data-theme="dark"] {
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
+/* Contact form styles */
+#contact .btn-light {
+  padding: 0.75rem 2rem;
+  border-radius: 25px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  background-color: var(--highlight-color);
+  color: #ffffff;
+}
+
+#contact .btn-light:hover {
+  background-color: #e65b50;
+  transform: scale(1.05);
+}
+
+[data-theme="dark"] #contact .btn-light {
+  background-color: var(--highlight-color);
+  color: #ffffff;
+}
+
+[data-theme="dark"] #contact .btn-light:hover {
+  background-color: var(--highlight-color, #ff8779);
+  transform: scale(1.05);
+}
+
+.social-links a {
+  transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+  color: var(--highlight-color);
+}
+
+/* Contact modal form */
+#contactModal .form-label {
+  color: var(--text-color);
+  font-weight: 500;
+}
+
+#contactModal .form-control {
+  background-color: rgba(255, 255, 255, 0.9);
+  border: 1px solid var(--separator-color);
+  color: #3a3434;
+}
+
+#contactModal .form-control:focus {
+  border-color: var(--highlight-color);
+  box-shadow: 0 0 5px rgba(255, 111, 97, 0.5);
+}
+
+#contactModal .btn-primary {
+  background-color: var(--highlight-color);
+  border: none;
+  border-radius: 25px;
+  padding: 0.5rem 1.5rem;
+}
+
+#contactModal .btn-primary:hover {
+  background-color: var(--highlight-color, #ff8779);
+  transform: scale(1.05);
+}
+
+.hidden {
+  display: none;
+}
+
+/* Responsive adjustments for contact modal */
+@media (max-width: 768px) {
+  #contactModal .modal-title {
+    font-size: 1.5rem;
+  }
+  #contactModal .modal-body {
+    font-size: 1rem;
+  }
+}
+
 .card {
   background-color: var(--card-bg);
   transition: transform 0.3s ease;
@@ -533,9 +618,14 @@ body.offcanvas-active .navbar.fixed-top {
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .navbar-brand {
-    font-size: 1.3rem;
-    margin-left: 0.5rem;
+    height: 48px;
+    width: 100px;
   }
+
+  .navbar {
+    padding: 8px 0;
+  }
+
 
   .navbar-nav .nav-link {
     font-size: 1.1rem;
@@ -599,79 +689,116 @@ body.offcanvas-active .navbar.fixed-top {
   }
 }
 
-
-/* Contact form styles */
-#contact .btn-light {
-  padding: 0.75rem 2rem;
-  border-radius: 25px;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+.text-danger {
+  color: #dc3545;
+}
+/* Skills section category title */
+.category-title {
+  font-family: 'Cinzel', serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-color);
+  margin-bottom: 1rem;
+  animation: fadeIn 1s ease-in;
 }
 
-#contact .btn-light:hover {
-  background-color: #e0e0e0;
-  transform: scale(1.05);
+/* Skills section category card */
+.skill-category-card {
+  background-color: var(--card-bg);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 100%;
+  animation: fadeIn 1s ease-in 0.3s;
+  animation-fill-mode: both;
 }
 
-[data-theme="dark"] #contact .btn-light {
-  background-color: var(--highlight-color);
-  color: #ffffff;
+.skill-category-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
 }
 
-[data-theme="dark"] #contact .btn-light:hover {
-  background-color: var(--highlight-color, #ff8779);
-  transform: scale(1.05);
+.skill-category-card .card-body {
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.social-links a {
-  transition: color 0.3s ease;
+.skill-category-card .card-title {
+  font-family: 'Cinzel', serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-color);
+  margin-bottom: 0;
+  text-align: center;
 }
 
-.social-links a:hover {
+/* Skills modal content */
+.modal-body ul li {
+  margin-bottom: 0.5rem;
+}
+
+.modal-body ul li strong {
   color: var(--highlight-color);
 }
-
-/* Contact modal form */
-#contactModal .form-label {
-  color: var(--text-color);
-  font-weight: 500;
+/* Skills modal progress bars */
+.modal-body .progress {
+  height: 10px;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+  background-color: var(--separator-color);
+  border-radius: 5px;
 }
 
-#contactModal .form-control {
-  background-color: rgba(255, 255, 255, 0.9);
-  border: 1px solid var(--separator-color);
-  color: #3a3434;
-}
-
-#contactModal .form-control:focus {
-  border-color: var(--highlight-color);
-  box-shadow: 0 0 5px rgba(255, 111, 97, 0.5);
-}
-
-#contactModal .btn-primary {
+.modal-body .progress-bar {
   background-color: var(--highlight-color);
-  border: none;
-  border-radius: 25px;
-  padding: 0.5rem 1.5rem;
+  transition: width 0.6s ease;
 }
 
-#contactModal .btn-primary:hover {
-  background-color: var(--highlight-color, #ff8779);
-  transform: scale(1.05);
+[data-theme="dark"] .modal-body .progress {
+  background-color: var(--separator-color);
 }
 
-.hidden {
-  display: none;
+[data-theme="dark"] .modal-body .progress-bar {
+  background-color: var(--highlight-color);
+}
+
+/* Offcanvas menu improvements */
+.offcanvas-body .nav-item {
+  margin: 1rem 0; /* Increased spacing between menu items */
+}
+
+.offcanvas-body .nav-link.section-link {
+  display: flex;
+  align-items: center; /* Align icon and text vertically */
+  padding: 0.75rem 1rem; /* Increased padding for better touch target */
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.offcanvas-body .nav-link.section-link i {
+  font-size: 1.25rem; /* Match icon size with other sections */
+  margin-right: 0.5rem; /* Ensure consistent spacing after me-2 */
+}
+
+.offcanvas-body .nav-link.section-link:hover {
+  background-color: rgba(255, 255, 255, 0.1); /* Subtle background on hover */
+  color: var(--highlight-color); /* Highlight color on hover */
+  border-radius: 5px;
+}
+
+/* Adjust theme toggle in offcanvas */
+.offcanvas-body .theme-toggle {
+  padding: 0.75rem 1rem;
 }
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
-  #contactModal .modal-title {
-    font-size: 1.5rem;
+  .offcanvas-body .nav-item {
+    margin: 0.75rem 0; /* Slightly less spacing on mobile */
   }
-  #contactModal .modal-body {
-    font-size: 1rem;
+  .offcanvas-body .nav-link.section-link {
+    padding: 0.5rem 0.8rem; /* Smaller padding on mobile */
   }
-}
-.text-danger {
-  color: #dc3545;
 }

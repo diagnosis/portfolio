@@ -1,17 +1,21 @@
 import './styles.css';
-import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import projectsList from './components/Projects';
 import ToggleTheme from './components/ToggleTheme';
-import { fetchProjects } from './cms/sanityClient.js';
+import { fetchProjects, fetchSkills } from './cms/sanityClient.js';
 import { ProjectDetails } from './components/ProjectDetails.js';
 import { ContactForm } from './components/ContactForm.js';
+import skillsList from './components/Skills.js';
 
 class App {
     constructor() {
         this.toggleTheme = new ToggleTheme();
         this.contactForm = new ContactForm();
         this.renderProjects();
+        this.renderSkills();
         this.contactForm.initialize();
+        document.addEventListener('DOMContentLoaded', () => {
+            this.setupOffcanvasClose();
+        });
     }
 
     async renderProjects() {
@@ -32,6 +36,30 @@ class App {
             item.links || []
         ));
         projectsList.render();
+    }
+
+    async renderSkills() {
+        const skillsData = await fetchSkills();
+        console.log('Fetched skills:', skillsData);
+        if (!skillsData || skillsData.length === 0) {
+            console.error('No skills fetched from Sanity');
+            return;
+        }
+        skillsList.setSkills(skillsData);
+        skillsList.render();
+    }
+
+    setupOffcanvasClose() {
+        const sectionLinks = document.querySelectorAll('.section-link');
+        sectionLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                const offcanvasElement = document.getElementById('navbarOffcanvas');
+                if (offcanvasElement) {
+                    const offcanvas = bootstrap.Offcanvas.getInstance(offcanvasElement) || new bootstrap.Offcanvas(offcanvasElement);
+                    offcanvas.hide();
+                }
+            });
+        });
     }
 }
 
