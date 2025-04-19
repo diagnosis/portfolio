@@ -49,14 +49,25 @@ class App {
         skillsList.render();
     }
 
-    setupOffcanvasClose() {
+
+    async setupOffcanvasClose() {
+        // Dynamically import Bootstrap Offcanvas
+        const { Offcanvas } = await import('bootstrap');
         const sectionLinks = document.querySelectorAll('.section-link');
         sectionLinks.forEach(link => {
             link.addEventListener('click', () => {
                 const offcanvasElement = document.getElementById('navbarOffcanvas');
                 if (offcanvasElement) {
-                    const offcanvas = bootstrap.Offcanvas.getInstance(offcanvasElement) || new bootstrap.Offcanvas(offcanvasElement);
+                    const offcanvas = Offcanvas.getInstance(offcanvasElement) || new Offcanvas(offcanvasElement);
                     offcanvas.hide();
+                    // Ensure the page scrolls to the section after closing
+                    setTimeout(() => {
+                        const targetId = link.getAttribute('href').substring(1); // e.g., "home"
+                        const targetElement = document.getElementById(targetId);
+                        if (targetElement) {
+                            targetElement.scrollIntoView({ behavior: 'smooth' });
+                        }
+                    }, 300); // Delay to allow offcanvas animation to complete
                 }
             });
         });
