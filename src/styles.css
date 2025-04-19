@@ -806,6 +806,9 @@ body.offcanvas-active .navbar.fixed-top {
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
+  .offcanvas{
+    max-width: 60%;
+  }
   .offcanvas-body .nav-item {
     margin: 0.75rem 0; /* Slightly less spacing on mobile */
   }
