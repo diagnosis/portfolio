@@ -15,7 +15,7 @@
   --about-bg: #f0f4f8;
   --skills-bg: #f8f0f5;
   --projects-bg: #e6f0fa;
-  --contact-bg: #f5f5f5;
+  --contact-bg: #f0f4f8;
   --separator-color: #d3d3d3;
   --highlight-color: #ff6f61;
 }
@@ -637,9 +637,9 @@ body.offcanvas-active .navbar.fixed-top {
 }
 
 #contactModal .form-control {
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.9);
   border: 1px solid var(--separator-color);
-  color: var(--text-color);
+  color: #3a3434;
 }
 
 #contactModal .form-control:focus {
