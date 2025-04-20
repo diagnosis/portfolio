@@ -5,66 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Safa Demirkan's portfolio - Software Development Engineer in Test specializing in test automation & CI/CD. Explore my projects and skills!">
   <title>Safa Demirkan - Software Engineer in Test Portfolio</title>
-  <!-- Open Graph Meta Tags -->
-  <meta property="og:title" content="Safa Demirkan - Software Engineer in Test Portfolio">
-  <meta property="og:description" content="Safa Demirkan's portfolio - Software Development Engineer in Test specializing in test automation & CI/CD. Explore my projects and skills!">
-  <meta property="og:image" content="https://safadev.app/assets/profile.jpg">
-  <meta property="og:url" content="https://safadev.app">
-  <meta property="og:type" content="website">
   <link rel="icon" type="image/jpg" href="./assets/logo.jpg">
-  <!-- Inline CSS for Cookie Consent Banner -->
-  <style>
-    #cookie-consent {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background-color: #343a40;
-      color: #ffffff;
-      padding: 15px;
-      text-align: center;
-      z-index: 1001;
-      display: none;
-    }
-    #cookie-consent button {
-      background-color: #e65b50;
-      color: #ffffff;
-      border: none;
-      padding: 8px 16px;
-      margin-left: 10px;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    #cookie-consent button:hover {
-      background-color: #c94f46;
-    }
-  </style>
 </head>
 <body data-theme="dark">
-<!-- Cookie Consent Banner -->
-<div id="cookie-consent">
-  <p>We use cookies to track visitor activity via Google Analytics to improve our site. By continuing, you agree to our <a href="/privacy-policy.html" style="color: #e65b50;">Privacy Policy</a>.</p>
-  <button onclick="acceptCookies()">Accept</button>
-</div>
-
-<!-- Inline JavaScript for Cookie Consent -->
-<script>
-  function acceptCookies() {
-    localStorage.setItem('cookieConsent', 'true');
-    document.getElementById('cookie-consent').style.display = 'none';
-    // Trigger GA initialization after consent
-    window.dispatchEvent(new Event('cookieConsentGiven'));
-  }
-
-  // Check if consent has been given
-  if (!localStorage.getItem('cookieConsent')) {
-    document.getElementById('cookie-consent').style.display = 'block';
-  } else {
-    // If consent already given, trigger GA initialization
-    window.dispatchEvent(new Event('cookieConsentGiven'));
-  }
-</script>
-
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-dark">
   <div class="container-fluid">
@@ -75,7 +18,7 @@
     <div class="offcanvas offcanvas-end" tabindex="-1" id="navbarOffcanvas" aria-labelledby="navbarOffcanvasLabel">
       <div class="offcanvas-header">
         <h5 class="offcanvas-title" id="navbarOffcanvasLabel">Menu</h5>
-        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
       <div class="offcanvas-body">
         <ul class="navbar-nav ms-auto align-items-lg-center">
@@ -93,9 +36,6 @@
           </li>
           <li class="nav-item">
             <a class="nav-link section-link" href="#contact"><i class="fas fa-envelope me-2"></i>Contact</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link section-link" href="#feedback"><i class="fas fa-comments me-2"></i>Feedback</a>
           </li>
           <li class="nav-item">
             <span class="nav-link theme-toggle">
@@ -120,9 +60,6 @@
 <!-- About Section -->
 <section id="about" class="section">
   <div class="container-fluid">
-    <div class="text-center mb-4">
-      <img src="./assets/profile.jpg" alt="Safa Demirkan" class="rounded-circle" style="width: 150px; height: 150px; object-fit: cover;">
-    </div>
     <h2 class="text-center mb-5"><i class="fas fa-user me-2"></i>About Me</h2>
     <div class="row">
       <div class="col-md-8 offset-md-2">
@@ -160,36 +97,6 @@
           <a href="https://github.com/diagnosis" class="text-dark mx-2"><i class="fab fa-github fa-2x"></i></a>
           <a href="https://www.instagram.com/serik_lee/" class="text-dark mx-2"><i class="fab fa-instagram fa-2x"></i></a>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Feedback Section -->
-<section id="feedback" class="section">
-  <div class="container-fluid">
-    <h2 class="text-center mb-5"><i class="fas fa-comments me-2"></i>Feedback</h2>
-    <div class="row">
-      <div class="col-md-6 offset-md-3">
-        <form name="feedback" method="POST" action="/.netlify/functions/submit-feedback">
-          <input type="hidden" name="form-name" value="feedback">
-          <p class="hidden">
-            <label>Don’t fill this out: <input name="bot-field"></label>
-          </p>
-          <div class="mb-3">
-            <label for="feedback-name" class="form-label">Name</label>
-            <input type="text" class="form-control" id="feedback-name" name="name" required>
-          </div>
-          <div class="mb-3">
-            <label for="feedback-email" class="form-label">Email</label>
-            <input type="email" class="form-control" id="feedback-email" name="email" required>
-          </div>
-          <div class="mb-3">
-            <label for="feedback-message" class="form-label">Feedback</label>
-            <textarea class="form-control" id="feedback-message" name="feedback" rows="5" required></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary">Submit Feedback</button>
-        </form>
       </div>
     </div>
   </div>
@@ -242,5 +149,6 @@
     </div>
   </div>
 </div>
+<!--<script> (function(){ var s = document.createElement('script'); var h = document.querySelector('head') || document.body; s.src = 'https://acsbapp.com/apps/app/dist/js/app.js'; s.async = true; s.onload = function(){ acsbJS.init(); }; h.appendChild(s); })(); </script>-->
 </body>
 </html>
