@@ -14,7 +14,6 @@ class App {
         this.contactForm.initialize();
         document.addEventListener('DOMContentLoaded', () => {
             this.setupOffcanvasClose();
-            this.setupAnalyticsEvents();
         });
     }
 

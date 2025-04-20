@@ -1,7 +1,7 @@
 const SANITY_PROJECT_ID = process.env.SANITY_PROJECT_ID;
 const SANITY_TOKEN = process.env.SANITY_TOKEN;
 const SANITY_DATASET = 'production';
-const SANITY_PROJECT_QUERY = '*[_type == "project"]{title, client, description, responsibilities, technologies, outcomes, links, tags} | order(_createdAt desc)';
+const SANITY_PROJECT_QUERY = '*[_type == "project"]{title, client, description, responsibilities, technologies, outcomes, links, tags, displayOrder} | order(displayOrder asc)';
 const SANITY_SKILLS_QUERY = '*[_type == "skill"]{category, name, experience, level} | order(category asc)';
 
 export async function fetchProjects() {
