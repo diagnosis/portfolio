@@ -50,8 +50,12 @@ html, body {
 }
 
 body {
+  background-image: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1)), url('./assets/light-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-color: transparent;
   font-family: 'Arial', sans-serif;
-  background-color: var(--bg-color);
   color: var(--text-color);
   transition: color 0.3s ease, background-color 0.3s ease;
 }
