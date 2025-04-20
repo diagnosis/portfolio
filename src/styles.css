@@ -1,8 +1,13 @@
-/* Import Gothic-style font from Google Fonts */
+/* ==========================================================================
+   Import External Styles
+   ========================================================================== */
 @import "bootstrap/dist/css/bootstrap.min.css";
 @import "@fortawesome/fontawesome-free/css/all.min.css";
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap');
 
+/* ==========================================================================
+   Global Styles and Variables
+   ========================================================================== */
 :root {
   --bg-color: #f8f9fa;
   --text-color: #212529;
@@ -18,6 +23,7 @@
   --contact-bg: #f0f4f8;
   --separator-color: #d3d3d3;
   --highlight-color: #ff6f61;
+  --section-title-font-size: 2rem;
 }
 
 [data-theme="dark"] {
@@ -36,7 +42,6 @@
   --separator-color: #4a4e54;
   --highlight-color: #ff8779;
 }
-/* Favicon via CSS */
 
 html, body {
   height: 100%;
@@ -59,6 +64,63 @@ body[data-theme="dark"] {
   background-color: transparent;
 }
 
+/* ==========================================================================
+   Animations
+   ========================================================================== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ==========================================================================
+   Global Elements
+   ========================================================================== */
+.container-fluid {
+  max-width: 1400px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.section {
+  padding: 80px 0;
+  position: relative;
+  max-width: 1400px;
+  margin: 0 auto;
+  transition: background-color 0.3s ease;
+}
+
+.section:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50%;
+  height: 10px;
+  background: linear-gradient(to right, transparent, var(--separator-color), transparent);
+}
+
+.section p, .section h2 {
+  color: var(--text-color);
+}
+
+.text-danger {
+  color: #dc3545;
+}
+
+.hidden {
+  display: none;
+}
+
+/* ==========================================================================
+   Navbar Styles
+   ========================================================================== */
 .navbar {
   position: sticky;
   top: 0;
@@ -70,7 +132,6 @@ body[data-theme="dark"] {
   z-index: 1000;
 }
 
-/* Navbar brand with logo as background image */
 .navbar-brand {
   background-image: url('./assets/logo.jpg');
   background-size: contain;
@@ -86,14 +147,12 @@ body[data-theme="dark"] {
   transform: scale(1.05);
 }
 
-/* Navbar links */
 .navbar-nav .nav-link {
   font-size: 1.25rem;
   padding: 0.5rem 1rem;
   color: #ffffff;
 }
 
-/* Theme toggle */
 .theme-toggle {
   cursor: pointer;
   color: #ffffff;
@@ -105,27 +164,70 @@ body[data-theme="dark"] {
   color: #adb5bd;
 }
 
-/* General section styles */
-.section {
-  padding: 80px 0;
-  position: relative;
-  max-width: 1400px;
-  margin: 0 auto;
+.navbar-toggler {
+  border: none;
   transition: background-color 0.3s ease;
 }
 
-/* Section separator */
-.section:not(:last-child)::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 50%;
-  height: 10px;
-  background: linear-gradient(to right, transparent, var(--separator-color), transparent);
+.navbar-toggler:focus {
+  outline: none;
+  box-shadow: none;
 }
 
+.navbar-toggler:active, .navbar-toggler:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.offcanvas {
+  background-color: var(--navbar-bg);
+  transition: transform 0.3s ease-in-out;
+}
+
+.offcanvas .nav-link {
+  color: #ffffff;
+}
+
+.offcanvas .nav-link:hover {
+  color: #adb5bd;
+}
+
+.offcanvas-body .nav-item {
+  margin: 1rem 0;
+}
+
+.offcanvas-body .nav-link.section-link {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.offcanvas-body .nav-link.section-link i {
+  font-size: 1.25rem;
+  margin-right: 0.5rem;
+}
+
+.offcanvas-body .nav-link.section-link:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: var(--highlight-color);
+  border-radius: 5px;
+}
+
+.offcanvas-body .theme-toggle {
+  padding: 0.75rem 1rem;
+}
+
+body.offcanvas-active {
+  overflow: hidden;
+}
+
+body.offcanvas-active .navbar.fixed-top {
+  padding-right: 0 !important;
+}
+
+/* ==========================================================================
+   Hero Section
+   ========================================================================== */
 .hero-section {
   position: relative;
   color: white;
@@ -138,7 +240,6 @@ body[data-theme="dark"] {
   justify-content: center;
 }
 
-/* Hero section background pseudo-element */
 .hero-section::before {
   content: '';
   position: absolute;
@@ -155,12 +256,10 @@ body[data-theme="dark"] {
   z-index: -1;
 }
 
-/* Dark mode hero section background */
 [data-theme="dark"] .hero-section::before {
   background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('./assets/hero-bg.jpg');
 }
 
-/* Hero section heading with Gothic calligraphy style */
 .hero-section h1 {
   font-family: 'Cinzel', serif;
   font-size: 2rem;
@@ -172,7 +271,6 @@ body[data-theme="dark"] {
   letter-spacing: 1px;
 }
 
-/* Hero section paragraph */
 .hero-section h4 {
   font-size: 1.25rem;
   margin: 2rem 2rem;
@@ -182,7 +280,6 @@ body[data-theme="dark"] {
   animation-fill-mode: both;
 }
 
-/* Hero section button */
 .hero-section .btn {
   font-size: 1.1rem;
   padding: 0.75rem 2rem;
@@ -213,38 +310,32 @@ body[data-theme="dark"] {
   transform: scale(1.05);
 }
 
-/* Fade-in animation */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* ==========================================================================
+   Card Styles (Shared for Projects and Skills)
+   ========================================================================== */
+.card {
+  background-color: var(--card-bg);
+  transition: transform 0.3s ease;
 }
 
-/* Container-fluid custom width */
-.container-fluid {
-  max-width: 1400px;
-  padding-left: 15px;
-  padding-right: 15px;
+.card:hover {
+  transform: translateY(-10px);
 }
 
-/* Project card styles */
+/* Project Card Specific */
 .project-card {
   background-color: var(--card-bg);
   border: none;
   border-radius: 10px;
   cursor: pointer;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
   height: 100%;
 }
 
 .project-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  transform: translateY(-5px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 .project-card .card-body {
@@ -275,7 +366,245 @@ body[data-theme="dark"] {
   margin-bottom: 0;
 }
 
-/* Modal styles */
+/* Project Tags */
+.project-tags {
+  margin-top: 0.5rem;
+}
+
+.project-tag {
+  display: inline-block;
+  padding: 0.2rem 0.5rem;
+  margin-right: 0.5rem;
+  border-radius: 3px;
+  font-size: 0.85rem;
+  color: var(--text-color);
+  background-color: var(--separator-color);
+}
+
+.project-tag-current {
+  background-color: var(--highlight-color);
+  color: #fff;
+}
+
+.project-tag-featured {
+  background-color: #28a745; /* Green for Featured */
+  color: #fff;
+}
+
+.project-tag-in-progress {
+  background-color: #dc3545; /* Red for In Progress */
+  color: #fff;
+}
+
+/* Skill Category Card Specific */
+.skill-category-card {
+  background-color: var(--card-bg);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+  height: 100%;
+}
+
+.skill-category-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.skill-category-card .card-body {
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.skill-category-card .card-title {
+  font-family: 'Cinzel', serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-color);
+  margin-bottom: 0;
+  text-align: center;
+}
+
+/* ==========================================================================
+   Section-Specific Styles
+   ========================================================================== */
+/* About Section */
+#about {
+  background: var(--about-bg);
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="dark"] #about {
+  background: var(--about-bg);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+#about h2 {
+  font-family: 'Cinzel', serif;
+  font-size: var(--section-title-font-size);
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  animation: fadeIn 1s ease-in;
+}
+
+#about h2 i {
+  font-size: 1.5rem;
+  margin-right: 0.5rem;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+#about h2 i:hover {
+  transform: rotate(360deg);
+  color: #ff6f61;
+}
+
+#about p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  animation: fadeIn 1s ease-in 0.3s;
+  animation-fill-mode: both;
+}
+
+@media (max-width: 768px) {
+  .section#about {
+    padding: 2rem 1rem; /* Reduce padding on mobile */
+  }
+  .section#about .rounded-circle {
+    width: 120px; /* Smaller profile image */
+    height: 120px;
+  }
+  .section#about p {
+    font-size: 0.95rem; /* Slightly smaller text */
+  }
+}
+
+/* Skills Section */
+#skills {
+  background: var(--skills-bg);
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="dark"] #skills {
+  background: var(--skills-bg);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+#skills h2 {
+  font-family: 'Cinzel', serif;
+  font-size: var(--section-title-font-size);
+  font-weight: 700;
+  animation: fadeIn 1s ease-in;
+}
+
+.category-title {
+  font-family: 'Cinzel', serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-color);
+  margin-bottom: 1rem;
+  animation: fadeIn 1s ease-in;
+}
+
+.skill-category {
+  padding: 20px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.5);
+  transition: transform 0.3s ease;
+  animation: fadeIn 1s ease-in 0.3s;
+  animation-fill-mode: both;
+}
+
+[data-theme="dark"] .skill-category {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.skill-category h4 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: var(--text-color);
+}
+
+.skill-category p {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 0;
+  color: var(--text-color);
+}
+
+/* Projects Section */
+#projects {
+  background: var(--projects-bg);
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+#projects h2 {
+  font-family: 'Cinzel', serif;
+  font-size: var(--section-title-font-size);
+  font-weight: 700;
+  animation: fadeIn 1s ease-in;
+}
+
+[data-theme="dark"] #projects {
+  background: var(--projects-bg);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Contact Section */
+#contact {
+  background: var(--contact-bg);
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="dark"] #contact {
+  background: var(--contact-bg);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+#contact .btn-light {
+  padding: 0.75rem 2rem;
+  border-radius: 25px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  background-color: var(--highlight-color);
+  color: #ffffff;
+}
+
+#contact .btn-light:hover {
+  background-color: #e65b50;
+  transform: scale(1.05);
+}
+
+[data-theme="dark"] #contact .btn-light {
+  background-color: var(--highlight-color);
+  color: #ffffff;
+}
+
+[data-theme="dark"] #contact .btn-light:hover {
+  background-color: var(--highlight-color, #ff8779);
+  transform: scale(1.05);
+}
+
+.social-links a {
+  transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+  color: var(--highlight-color);
+}
+
+[data-theme="dark"] .text-dark {
+  color: #e0e0e0 !important;
+}
+
+/* ==========================================================================
+   Modal Styles
+   ========================================================================== */
 .modal-content {
   background-color: rgba(58, 62, 68, 0.95);
   color: var(--text-color);
@@ -319,7 +648,35 @@ body[data-theme="dark"] {
   color: var(--highlight-color);
 }
 
-/* Project link styles */
+.modal-body ul li {
+  margin-bottom: 0.5rem;
+}
+
+.modal-body ul li strong {
+  color: var(--highlight-color);
+}
+
+.modal-body .progress {
+  height: 10px;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+  background-color: var(--separator-color);
+  border-radius: 5px;
+}
+
+.modal-body .progress-bar {
+  background-color: var(--highlight-color);
+  transition: width 0.6s ease;
+}
+
+[data-theme="dark"] .modal-body .progress {
+  background-color: var(--separator-color);
+}
+
+[data-theme="dark"] .modal-body .progress-bar {
+  background-color: var(--highlight-color);
+}
+
 .project-link {
   color: var(--highlight-color);
   text-decoration: none;
@@ -351,174 +708,7 @@ body[data-theme="dark"] {
   transform: scale(1.05);
 }
 
-/* About Me section specific styles */
-#about {
-  background: var(--about-bg);
-  border-radius: 10px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-}
-
-/* Dark mode About Me background */
-[data-theme="dark"] #about {
-  background: var(--about-bg);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-}
-
-/* About Me heading */
-#about h2 {
-  font-family: 'Cinzel', serif;
-  font-size: 2.5rem;
-  font-weight: 700;
-  margin-bottom: 1.5rem;
-  animation: fadeIn 1s ease-in;
-}
-
-/* About Me icon */
-#about h2 i {
-  font-size: 1.5rem;
-  margin-right: 0.5rem;
-  transition: transform 0.3s ease, color 0.3s ease;
-}
-
-#about h2 i:hover {
-  transform: rotate(360deg);
-  color: #ff6f61;
-}
-
-/* About Me paragraph */
-#about p {
-  font-size: 1.1rem;
-  line-height: 1.8;
-  animation: fadeIn 1s ease-in 0.3s;
-  animation-fill-mode: both;
-}
-@media (max-width: 768px) {
-  .section#about {
-    padding: 2rem 1rem; /* Reduce padding on mobile */
-  }
-  .section#about .rounded-circle {
-    width: 120px; /* Smaller profile image */
-    height: 120px;
-  }
-  .section#about p {
-    font-size: 0.95rem; /* Slightly smaller text */
-  }
-}
-/* Highlighted skills in About Me paragraph */
-.highlight-skill {
-  font-weight: 700;
-  color: var(--highlight-color);
-  transition: color 0.3s ease;
-}
-
-/* Skills section specific styles */
-#skills {
-  background: var(--skills-bg);
-  border-radius: 10px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-}
-
-/* Dark mode Skills background */
-[data-theme="dark"] #skills {
-  background: var(--skills-bg);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-}
-
-/* Skills section heading */
-#skills h2 {
-  font-family: 'Cinzel', serif;
-  font-size: 2.5rem;
-  font-weight: 700;
-  animation: fadeIn 1s ease-in;
-}
-
-/* Skill category styles */
-.skill-category {
-  padding: 20px;
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.5);
-  transition: transform 0.3s ease;
-  animation: fadeIn 1s ease-in 0.3s;
-  animation-fill-mode: both;
-}
-
-[data-theme="dark"] .skill-category {
-  background: rgba(0, 0, 0, 0.3);
-}
-
-.skill-category h4 {
-  font-size: 1.25rem;
-  font-weight: 600;
-  margin-bottom: 1rem;
-  color: var(--text-color);
-}
-
-.skill-category p {
-  font-size: 1rem;
-  line-height: 1.6;
-  margin: 0;
-  color: var(--text-color);
-}
-
-/* Projects section specific styles */
-#projects {
-  background: var(--projects-bg);
-  border-radius: 10px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-}
-
-/* Dark mode Projects background */
-[data-theme="dark"] #projects {
-  background: var(--projects-bg);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-}
-
-/* Contact section specific styles */
-#contact {
-  background: var(--contact-bg);
-  border-radius: 10px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-}
-
-/* Dark mode Contact background */
-[data-theme="dark"] #contact {
-  background: var(--contact-bg);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-}
-
-/* Contact form styles */
-#contact .btn-light {
-  padding: 0.75rem 2rem;
-  border-radius: 25px;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  background-color: var(--highlight-color);
-  color: #ffffff;
-}
-
-#contact .btn-light:hover {
-  background-color: #e65b50;
-  transform: scale(1.05);
-}
-
-[data-theme="dark"] #contact .btn-light {
-  background-color: var(--highlight-color);
-  color: #ffffff;
-}
-
-[data-theme="dark"] #contact .btn-light:hover {
-  background-color: var(--highlight-color, #ff8779);
-  transform: scale(1.05);
-}
-
-.social-links a {
-  transition: color 0.3s ease;
-}
-
-.social-links a:hover {
-  color: var(--highlight-color);
-}
-
-/* Contact modal form */
+/* Contact Modal Form */
 #contactModal .form-label {
   color: var(--text-color);
   font-weight: 500;
@@ -547,29 +737,46 @@ body[data-theme="dark"] {
   transform: scale(1.05);
 }
 
-.hidden {
-  display: none;
+/* ==========================================================================
+   Floating Contact Button
+   ========================================================================== */
+.floating-contact-btn {
+  display: none; /* Hidden by default */
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: var(--highlight-color);
+  color: #fff;
+  border: none;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease;
 }
 
-/* Responsive adjustments for contact modal */
+.floating-contact-btn:hover {
+  transform: scale(1.1);
+}
+
+.floating-contact-btn i {
+  font-size: 1.5rem;
+}
+
+/* Show floating button on mobile devices */
 @media (max-width: 768px) {
-  #contactModal .modal-title {
-    font-size: 1.5rem;
-  }
-  #contactModal .modal-body {
-    font-size: 1rem;
+  .floating-contact-btn {
+    display: flex;
   }
 }
 
-.card {
-  background-color: var(--card-bg);
-  transition: transform 0.3s ease;
-}
-
-.card:hover {
-  transform: translateY(-10px);
-}
-
+/* ==========================================================================
+   Footer
+   ========================================================================== */
 .footer {
   background-color: var(--footer-bg);
   color: var(--footer-text);
@@ -579,54 +786,9 @@ body[data-theme="dark"] {
   margin: 0 auto;
 }
 
-.section p, .section h2 {
-  color: var(--text-color);
-}
-
-.offcanvas {
-  background-color: var(--navbar-bg);
-}
-
-.offcanvas .nav-link {
-  color: #ffffff;
-}
-
-.offcanvas .nav-link:hover {
-  color: #adb5bd;
-}
-
-.navbar-toggler {
-  border: none;
-  transition: background-color 0.3s ease;
-}
-
-.navbar-toggler:focus {
-  outline: none;
-  box-shadow: none;
-}
-
-.navbar-toggler:active, .navbar-toggler:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-}
-
-.offcanvas {
-  transition: transform 0.3s ease-in-out;
-}
-
-body.offcanvas-active {
-  overflow: hidden;
-}
-
-body.offcanvas-active .navbar.fixed-top {
-  padding-right: 0 !important;
-}
-
-/* Ensure social icons in Contact Me section are visible in dark mode */
-[data-theme="dark"] .text-dark {
-  color: #e0e0e0 !important;
-}
-
-/* Responsive adjustments */
+/* ==========================================================================
+   Responsive Adjustments
+   ========================================================================== */
 @media (max-width: 768px) {
   .navbar-brand {
     height: 48px;
@@ -636,7 +798,6 @@ body.offcanvas-active .navbar.fixed-top {
   .navbar {
     padding: 8px 0;
   }
-
 
   .navbar-nav .nav-link {
     font-size: 1.1rem;
@@ -698,115 +859,15 @@ body.offcanvas-active .navbar.fixed-top {
     font-size: 0.9rem;
     margin-right: 0.5rem;
   }
-}
 
-.text-danger {
-  color: #dc3545;
-}
-/* Skills section category title */
-.category-title {
-  font-family: 'Cinzel', serif;
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--text-color);
-  margin-bottom: 1rem;
-  animation: fadeIn 1s ease-in;
-}
+  #contactModal .modal-title {
+    font-size: 1.5rem;
+  }
+  #contactModal .modal-body {
+    font-size: 1rem;
+  }
 
-/* Skills section category card */
-.skill-category-card {
-  background-color: var(--card-bg);
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  height: 100%;
-  animation: fadeIn 1s ease-in 0.3s;
-  animation-fill-mode: both;
-}
-
-.skill-category-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
-}
-
-.skill-category-card .card-body {
-  padding: 1.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.skill-category-card .card-title {
-  font-family: 'Cinzel', serif;
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--text-color);
-  margin-bottom: 0;
-  text-align: center;
-}
-
-/* Skills modal content */
-.modal-body ul li {
-  margin-bottom: 0.5rem;
-}
-
-.modal-body ul li strong {
-  color: var(--highlight-color);
-}
-/* Skills modal progress bars */
-.modal-body .progress {
-  height: 10px;
-  margin-top: 0.5rem;
-  margin-bottom: 1rem;
-  background-color: var(--separator-color);
-  border-radius: 5px;
-}
-
-.modal-body .progress-bar {
-  background-color: var(--highlight-color);
-  transition: width 0.6s ease;
-}
-
-[data-theme="dark"] .modal-body .progress {
-  background-color: var(--separator-color);
-}
-
-[data-theme="dark"] .modal-body .progress-bar {
-  background-color: var(--highlight-color);
-}
-
-/* Offcanvas menu improvements */
-.offcanvas-body .nav-item {
-  margin: 1rem 0; /* Increased spacing between menu items */
-}
-
-.offcanvas-body .nav-link.section-link {
-  display: flex;
-  align-items: center; /* Align icon and text vertically */
-  padding: 0.75rem 1rem; /* Increased padding for better touch target */
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.offcanvas-body .nav-link.section-link i {
-  font-size: 1.25rem; /* Match icon size with other sections */
-  margin-right: 0.5rem; /* Ensure consistent spacing after me-2 */
-}
-
-.offcanvas-body .nav-link.section-link:hover {
-  background-color: rgba(255, 255, 255, 0.1); /* Subtle background on hover */
-  color: var(--highlight-color); /* Highlight color on hover */
-  border-radius: 5px;
-}
-
-/* Adjust theme toggle in offcanvas */
-.offcanvas-body .theme-toggle {
-  padding: 0.75rem 1rem;
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .offcanvas{
+  .offcanvas {
     max-width: 60%;
   }
   .offcanvas-body .nav-item {
@@ -817,40 +878,5 @@ body.offcanvas-active .navbar.fixed-top {
   }
   .offcanvas-body .nav-link.section-link {
     padding: 0.5rem 0.8rem; /* Smaller padding on mobile */
-  }
-}
-/* Floating Contact Button */
-.floating-contact-btn {
-  display: none; /* Hidden by default */
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  z-index: 1000;
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  background-color: var(--highlight-color);
-  color: #fff;
-  border: none;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-  cursor: pointer;
-
-  align-items: center;
-  justify-content: center;
-  transition: transform 0.2s ease;
-}
-
-.floating-contact-btn:hover {
-  transform: scale(1.1);
-}
-
-.floating-contact-btn i {
-  font-size: 1.5rem;
-}
-
-/* Show floating button on mobile devices */
-@media (max-width: 768px) {
-  .floating-contact-btn {
-    display: flex;
   }
 }

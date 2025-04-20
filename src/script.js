@@ -2,7 +2,6 @@ import './styles.css';
 import projectsList from './components/Projects';
 import ToggleTheme from './components/ToggleTheme';
 import { fetchProjects, fetchSkills } from './cms/sanityClient.js';
-import { ProjectDetails } from './components/ProjectDetails.js';
 import { ContactForm } from './components/ContactForm.js';
 import skillsList from './components/Skills.js';
 
@@ -15,27 +14,25 @@ class App {
         this.contactForm.initialize();
         document.addEventListener('DOMContentLoaded', () => {
             this.setupOffcanvasClose();
+            this.setupAnalyticsEvents();
         });
     }
 
     async renderProjects() {
-        const projectsData = await fetchProjects();
-        console.log('Fetched projects:', projectsData);
-        if (!projectsData || projectsData.length === 0) {
-            console.error('No projects fetched from Sanity');
-            return;
+        try {
+            const projectsData = await fetchProjects();
+            console.log('Fetched projects:', projectsData); // Debug: Confirm data
+            if (!projectsData || projectsData.length === 0) {
+                console.error('No projects fetched from Sanity');
+                return;
+            }
+            console.log('Calling setProjects with data:', projectsData); // Debug: Confirm method call
+            projectsList.setProjects(projectsData);
+            console.log('Rendering projectsList'); // Debug: Confirm render
+            projectsList.render();
+        } catch (error) {
+            console.error('Error in renderProjects:', error);
         }
-        projectsList.projects = projectsData.map((item, index) => new ProjectDetails(
-            `project${index + 1}`,
-            item.title,
-            item.client,
-            item.description,
-            item.responsibilities,
-            item.technologies,
-            item.outcomes,
-            item.links || []
-        ));
-        projectsList.render();
     }
 
     async renderSkills() {
@@ -49,9 +46,7 @@ class App {
         skillsList.render();
     }
 
-
     async setupOffcanvasClose() {
-        // Dynamically import Bootstrap Offcanvas
         const { Offcanvas } = await import('bootstrap');
         const sectionLinks = document.querySelectorAll('.section-link');
         sectionLinks.forEach(link => {
@@ -60,18 +55,19 @@ class App {
                 if (offcanvasElement) {
                     const offcanvas = Offcanvas.getInstance(offcanvasElement) || new Offcanvas(offcanvasElement);
                     offcanvas.hide();
-                    // Ensure the page scrolls to the section after closing
                     setTimeout(() => {
-                        const targetId = link.getAttribute('href').substring(1); // e.g., "home"
+                        const targetId = link.getAttribute('href').substring(1);
                         const targetElement = document.getElementById(targetId);
                         if (targetElement) {
                             targetElement.scrollIntoView({ behavior: 'smooth' });
                         }
-                    }, 300); // Delay to allow offcanvas animation to complete
+                    }, 300);
                 }
             });
         });
     }
+
+
 }
 
 new App();
